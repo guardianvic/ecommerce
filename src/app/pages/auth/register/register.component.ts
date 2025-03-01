@@ -45,16 +45,11 @@ export class RegisterComponent {
     }
     this.authService.register(data).subscribe((resp:any)=>{
       console.log(resp);
-      if(resp.error && resp.error.error == 'Unauthorized'){
-        this.toastr.error('Validacion', 'Credenciales son incorrectas' );
-        return;
-      }
-      if(resp == true){
-        this.toastr.success('Exito', 'Bienvenido a la tienda' );
+      this.toastr.success('Exito', 'Ingresa a tu correo para completar tu registro' );
         setTimeout(() => {
-          this.router.navigateByUrl('/'); 
+          this.router.navigateByUrl('/login'); 
         }, 50);      
-      }  
+       
     })
   }
 
